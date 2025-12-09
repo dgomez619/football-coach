@@ -3,69 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lo-Fi Prototype</title>
+    <title>Coaching App</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        header: ['Oswald', 'sans-serif'], // Custom font for headers
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-white text-gray-800 font-mono">
+<body class="bg-neutral-950 text-white">
 
-    <nav class="flex items-center justify-between p-4 border-b-2 border-gray-300">
-        <div class="w-32 h-8 bg-gray-400 flex items-center justify-center text-xs text-white">
-            LOGO
+    <div class="min-h-screen p-4 flex items-center justify-center">
+      
+      <div class="max-w-6xl w-full grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[200px]">
+
+        <div class="group relative col-span-2 row-span-2 bg-neutral-900 rounded-3xl overflow-hidden hover:scale-[1.01] transition-transform duration-300 ease-out border border-neutral-800">
+          <div class="absolute inset-0 bg-neutral-800 opacity-50 flex items-center justify-center">
+            <span class="text-neutral-500 text-sm tracking-widest">[VIDEO LOOP HERE]</span>
+          </div>
+          <div class="absolute bottom-0 left-0 p-6 z-10">
+            <h2 class="font-header text-4xl md:text-5xl uppercase italic tracking-wide text-white drop-shadow-lg">
+                Unleash<br>Speed
+            </h2>
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
         </div>
-        
-        <ul class="hidden md:flex space-x-6 text-sm font-bold text-gray-500">
-            <li><a href="#" class="hover:text-black">LINK 1</a></li>
-            <li><a href="#" class="hover:text-black">LINK 2</a></li>
-            <li><a href="#" class="hover:text-black">LINK 3</a></li>
-        </ul>
 
-        <button id="menu-btn" class="md:hidden p-2 border border-gray-400 rounded">
-            MENU
-        </button>
-    </nav>
-
-    <div id="mobile-menu" class="hidden bg-gray-100 p-4 border-b border-gray-300 md:hidden">
-        <a href="#" class="block py-2 text-gray-600">Link 1</a>
-        <a href="#" class="block py-2 text-gray-600">Link 2</a>
-        <a href="#" class="block py-2 text-gray-600">Link 3</a>
-    </div>
-
-    <header class="flex flex-col md:flex-row items-center justify-between p-10 bg-gray-50 gap-10">
-        <div class="w-full md:w-1/2 space-y-4">
-            <div class="h-8 w-3/4 bg-gray-300"></div> <div class="h-8 w-1/2 bg-gray-300"></div> <div class="h-20 w-full bg-gray-200 mt-4"></div> <button class="mt-4 px-6 py-3 bg-black text-white font-bold uppercase text-sm">
-                Call to Action
-            </button>
+        <div class="col-span-2 md:row-span-1 bg-neutral-900 rounded-3xl p-6 md:p-8 flex flex-col justify-center items-start border border-neutral-800 hover:border-lime-400/50 transition-colors duration-300">
+          <p class="text-neutral-400 text-xs font-bold tracking-widest uppercase mb-1">Philosophy</p>
+          <h1 class="font-header text-4xl md:text-5xl text-white uppercase leading-none">
+            Zero Cost.<br>
+            <span class="text-lime-400">100% Grind.</span>
+          </h1>
         </div>
-        
-        <div class="w-full md:w-1/2 h-64 border-4 border-dashed border-gray-300 flex items-center justify-center text-gray-400">
-            HERO IMAGE PLACEHOLDER
-        </div>
-    </header>
 
-    <section class="p-10">
-        <div class="h-6 w-48 bg-gray-300 mb-8 mx-auto"></div> <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="border border-gray-300 p-6">
-                <div class="w-full h-32 bg-gray-200 mb-4"></div> <div class="h-4 w-3/4 bg-gray-300 mb-2"></div> <div class="h-2 w-full bg-gray-100 mb-1"></div> <div class="h-2 w-full bg-gray-100 mb-1"></div>
+        <div class="col-span-1 md:row-span-1 bg-neutral-800 rounded-3xl p-5 flex flex-col justify-between border border-neutral-700 hover:bg-neutral-700 transition-colors cursor-pointer">
+          <div class="flex justify-between items-start">
+            <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse mt-1"></span>
+            <span class="text-neutral-400 text-[10px] md:text-xs font-bold uppercase">Next Camp</span>
+          </div>
+          <div>
+            <p class="font-header text-2xl md:text-3xl text-white">SAT 9AM</p>
+            <p class="text-neutral-400 text-xs truncate">Main Stadium Field</p>
+          </div>
+        </div>
+
+        <div class="group col-span-1 md:row-span-1 bg-blue-600 rounded-3xl p-5 flex flex-col justify-between hover:bg-blue-500 transition-colors cursor-pointer relative overflow-hidden">
+          <div class="absolute -right-4 -top-4 w-20 h-20 bg-white/20 rounded-full blur-2xl"></div>
+          
+          <span class="text-blue-200 text-[10px] md:text-xs font-bold uppercase z-10">Socials</span>
+          <div class="z-10">
+            <p class="font-header text-xl md:text-2xl text-white leading-tight">JOIN THE<br>TEAM</p>
+            <div class="mt-2 text-white/80">
+                <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
             </div>
-            <div class="border border-gray-300 p-6">
-                <div class="w-full h-32 bg-gray-200 mb-4"></div>
-                <div class="h-4 w-3/4 bg-gray-300 mb-2"></div>
-                <div class="h-2 w-full bg-gray-100 mb-1"></div>
-                <div class="h-2 w-full bg-gray-100 mb-1"></div>
-            </div>
-            <div class="border border-gray-300 p-6">
-                <div class="w-full h-32 bg-gray-200 mb-4"></div>
-                <div class="h-4 w-3/4 bg-gray-300 mb-2"></div>
-                <div class="h-2 w-full bg-gray-100 mb-1"></div>
-                <div class="h-2 w-full bg-gray-100 mb-1"></div>
-            </div>
+          </div>
         </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white p-10 flex justify-center">
-        <p class="text-sm text-gray-400">© 2024 COMPANY NAME</p>
-    </footer>
-
-    <script src="./js/main.js"></script>
-</body>
-</html>
+        <div class="col-span-1 md:row-span-1 bg-neutral-900 rounded-3xl overflow-hidden relative border border-neutral-800 hover:scale-[1.02] transition-transform">
+            <div class="absolute inset-0 bg-neutral-800 flex items-center justify-center">
+                <span class="text-neutral-600 text-xs">[IMG]</span>
+            </div>
+            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
+                <p class="font-header text-white text-lg
