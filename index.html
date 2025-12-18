@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coaching App</title>
+    <title>Coach MARK - Elite Training</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -17,65 +17,124 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        header: ['Oswald', 'sans-serif'], // Custom font for headers
+                        header: ['Oswald', 'sans-serif'],
+                    },
+                    colors: {
+                        lime: { 400: '#a3e635', 500: '#84cc16' }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-neutral-950 text-white">
 
-    <div class="min-h-screen p-4 flex items-center justify-center">
-      
-      <div class="max-w-6xl w-full grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[200px]">
+<body class="min-h-screen bg-neutral-950 text-white antialiased selection:bg-lime-400 selection:text-black font-sans">
 
-        <div class="group relative col-span-2 row-span-2 bg-neutral-900 rounded-3xl overflow-hidden hover:scale-[1.01] transition-transform duration-300 ease-out border border-neutral-800">
-          <div class="absolute inset-0 bg-neutral-800 opacity-50 flex items-center justify-center">
-            <span class="text-neutral-500 text-sm tracking-widest">[VIDEO LOOP HERE]</span>
-          </div>
-          <div class="absolute bottom-0 left-0 p-6 z-10">
-            <h2 class="font-header text-4xl md:text-5xl uppercase italic tracking-wide text-white drop-shadow-lg">
-                Unleash<br>Speed
-            </h2>
-          </div>
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
-        </div>
+    <div class="min-h-screen w-full flex flex-col bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-neutral-950 to-black">
 
-        <div class="col-span-2 md:row-span-1 bg-neutral-900 rounded-3xl p-6 md:p-8 flex flex-col justify-center items-start border border-neutral-800 hover:border-lime-400/50 transition-colors duration-300">
-          <p class="text-neutral-400 text-xs font-bold tracking-widest uppercase mb-1">Philosophy</p>
-          <h1 class="font-header text-4xl md:text-5xl text-white uppercase leading-none">
-            Zero Cost.<br>
-            <span class="text-lime-400">100% Grind.</span>
-          </h1>
-        </div>
-
-        <div class="col-span-1 md:row-span-1 bg-neutral-800 rounded-3xl p-5 flex flex-col justify-between border border-neutral-700 hover:bg-neutral-700 transition-colors cursor-pointer">
-          <div class="flex justify-between items-start">
-            <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse mt-1"></span>
-            <span class="text-neutral-400 text-[10px] md:text-xs font-bold uppercase">Next Camp</span>
-          </div>
-          <div>
-            <p class="font-header text-2xl md:text-3xl text-white">SAT 9AM</p>
-            <p class="text-neutral-400 text-xs truncate">Main Stadium Field</p>
-          </div>
-        </div>
-
-        <div class="group col-span-1 md:row-span-1 bg-blue-600 rounded-3xl p-5 flex flex-col justify-between hover:bg-blue-500 transition-colors cursor-pointer relative overflow-hidden">
-          <div class="absolute -right-4 -top-4 w-20 h-20 bg-white/20 rounded-full blur-2xl"></div>
-          
-          <span class="text-blue-200 text-[10px] md:text-xs font-bold uppercase z-10">Socials</span>
-          <div class="z-10">
-            <p class="font-header text-xl md:text-2xl text-white leading-tight">JOIN THE<br>TEAM</p>
-            <div class="mt-2 text-white/80">
-                <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+        <nav class="sticky top-0 z-50 w-full px-6 py-4 backdrop-blur-xl bg-neutral-950/80 border-b border-white/10 flex justify-between items-center">
+            <div class="flex items-center space-x-2 cursor-pointer group">
+                <svg class="w-8 h-8 text-lime-400 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <span class="font-header text-2xl font-bold uppercase tracking-wider italic">
+                    Coach<span class="text-lime-400">MARK</span>
+                </span>
             </div>
-          </div>
-        </div>
-
-        <div class="col-span-1 md:row-span-1 bg-neutral-900 rounded-3xl overflow-hidden relative border border-neutral-800 hover:scale-[1.02] transition-transform">
-            <div class="absolute inset-0 bg-neutral-800 flex items-center justify-center">
-                <span class="text-neutral-600 text-xs">[IMG]</span>
+            <div class="hidden md:flex items-center space-x-8 font-header text-sm uppercase tracking-widest font-medium">
+                <a href="#" class="hover:text-lime-400 transition-colors">Philosophy</a>
+                <a href="#" class="hover:text-lime-400 transition-colors">Training</a>
+                <a href="#" class="group relative px-6 py-2 bg-lime-400 text-black font-bold skew-x-[-10deg] hover:bg-lime-300 transition-all hover:scale-105 shadow-[0_0_15px_rgba(163,230,53,0.5)]">
+                    <span class="block skew-x-[10deg]">JOIN SQUAD</span>
+                </a>
             </div>
-            <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black to-transparent">
-                <p class="font-header text-white text-lg
+            <button class="md:hidden text-white hover:text-lime-400 transition-colors">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+
+        <main class="flex-grow flex items-center justify-center p-4 py-10">
+            
+            <div class="max-w-6xl w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 auto-rows-[160px] md:auto-rows-[200px]">
+
+                <div class="group relative col-span-2 row-span-2 bg-neutral-900 rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+                    <div class="absolute inset-0 bg-neutral-800 flex items-center justify-center group-hover:bg-neutral-800/80 transition-colors">
+                        <span class="text-neutral-500 font-header tracking-widest text-sm opacity-50">[VIDEO LOOP]</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 p-6 md:p-8 z-10 w-full">
+                        <div class="w-12 h-1 bg-lime-400 mb-4 rounded-full"></div>
+                        <h2 class="font-header text-4xl md:text-6xl uppercase italic font-bold tracking-tighter text-white drop-shadow-lg leading-[0.9]">
+                            Unleash<br>Your Speed
+                        </h2>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
+                </div>
+
+                <div class="relative group col-span-2 md:row-span-1 rounded-3xl overflow-hidden border border-white/10 hover:border-lime-400/50 transition-colors duration-300 shadow-lg">
+                    
+                    <div class="absolute inset-0 bg-[url('./animeBG.png')] bg-cover bg-[center_top] transition-transform duration-700 ease-out group-hover:scale-105"></div>
+                    
+                    <div class="relative z-10 h-full p-6 md:p-8 flex flex-col justify-center items-start">
+                        <p class="text-white text-xs font-bold tracking-widest uppercase mb-1 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">Philosophy</p>
+                        <h1 class="font-header text-4xl md:text-5xl text-white uppercase leading-none drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
+                            Zero Cost.<br>
+                            <span class="text-lime-400 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">100% Grind.</span>
+                        </h1>
+                    </div>
+                </div>
+                <div class="col-span-1 md:row-span-1 bg-neutral-800/50 backdrop-blur-md rounded-3xl p-5 flex flex-col justify-between border border-white/10 hover:bg-neutral-800 transition-colors cursor-pointer group shadow-lg">
+                    <div class="flex justify-between items-start">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                        </span>
+                        <span class="text-neutral-400 text-[10px] font-bold uppercase tracking-wider group-hover:text-white transition-colors">Next Camp</span>
+                    </div>
+                    <div>
+                        <p class="font-header text-2xl md:text-3xl font-bold text-white leading-none mb-1">SAT 9AM</p>
+                        <p class="text-neutral-400 text-xs truncate">High School Stadium</p>
+                    </div>
+                </div>
+
+                <div class="group col-span-1 md:row-span-1 bg-blue-600 rounded-3xl p-5 flex flex-col justify-between hover:bg-blue-500 transition-colors cursor-pointer relative overflow-hidden border border-white/10 shadow-lg shadow-blue-900/30">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-white/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                    <span class="text-blue-100 text-[10px] font-bold uppercase z-10 tracking-wider">Socials</span>
+                    <div class="z-10">
+                        <p class="font-header text-xl md:text-2xl font-bold text-white leading-none">JOIN THE<br>TEAM</p>
+                        <div class="mt-3 flex items-center text-white/90 text-sm font-bold">
+                            <span>@CoachMARK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-1 md:row-span-1 bg-neutral-900/50 backdrop-blur-md rounded-3xl overflow-hidden relative border border-white/10 hover:scale-[1.02] transition-transform shadow-lg group">
+                    <div class="absolute inset-0 bg-neutral-800 flex items-center justify-center">
+                        <span class="text-neutral-600 text-xs">[IMG]</span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black via-black/80 to-transparent">
+                        <p class="font-header text-white text-lg font-bold uppercase leading-none">Coach MARK</p>
+                        <p class="text-lime-400 text-[10px] font-bold uppercase tracking-wider">Head Trainer</p>
+                    </div>
+                </div>
+
+                <div class="col-span-1 md:row-span-1 bg-neutral-950/80 backdrop-blur-xl rounded-3xl p-4 border border-white/10 flex items-center justify-center relative overflow-hidden group shadow-lg cursor-pointer hover:border-lime-400/30 transition-colors">
+                    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0d_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0d_1px,transparent_1px)] bg-[size:16px_16px] opacity-70 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="text-center z-10">
+                        <p class="text-neutral-500 text-[10px] uppercase mb-1 tracking-widest font-bold">Methodology</p>
+                        <p class="font-header text-2xl md:text-3xl text-white font-bold group-hover:text-lime-400 transition-colors">IQ + GRIT</p>
+                    </div>
+                </div>
+
+                <div class="col-span-1 md:row-span-1 bg-neutral-800/50 backdrop-blur-md rounded-3xl p-4 flex flex-col justify-center items-center text-center border border-white/10 hover:border-white transition-colors cursor-pointer hover:bg-neutral-700/60 shadow-lg group">
+                    <svg class="w-6 h-6 text-lime-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <p class="font-bold text-xs text-white tracking-wider">VIEW MAP</p>
+                </div>
+
+                <div class="col-span-1 md:row-span-1 bg-neutral-900/50 backdrop-blur-md rounded-3xl p-4 flex flex-col justify-center items-center border border-white/10 shadow-lg">
+                    <p class="font-header text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-500 leading-none">50+</p>
+                    <p class="text-neutral-400 text-[10px] uppercase tracking-[0.2em] mt-2">Recruits</p>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>
