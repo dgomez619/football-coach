@@ -20,7 +20,8 @@
                         header: ['Oswald', 'sans-serif'],
                     },
                     colors: {
-                        lime: { 400: '#a3e635', 500: '#84cc16' }
+                        'electric-red': { 400: '#FF0033', 500: '#E6002E', 600: '#CC0029' },
+                        'off-white': '#F5F5F5'
                     }
                 }
             }
@@ -34,19 +35,19 @@
 
         <nav id="navbar" class="sticky top-0 z-50 w-full px-6 py-4 backdrop-blur-xl bg-neutral-950/80 border-b border-white/10 flex justify-between items-center h-[80px]">
             <div class="flex items-center space-x-2 cursor-pointer">
-                <svg class="w-8 h-8 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <svg class="w-8 h-8 text-electric-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 <span class="font-header text-2xl font-bold uppercase tracking-wider italic">
-                    Coach<span class="text-lime-400">MARK</span>
+                    Coach<span class="text-electric-red-400">MARK</span>
                 </span>
             </div>
             <div class="hidden md:flex items-center space-x-8 font-header text-sm uppercase tracking-widest font-medium">
-                <a href="#" class="hover:text-lime-400 transition-colors">Philosophy</a>
-                <a href="#" class="hover:text-lime-400 transition-colors">Training</a>
-                <a href="#" class="px-6 py-2 bg-lime-400 text-black font-bold skew-x-[-10deg] hover:bg-lime-300 transition-transform hover:scale-105">
+                <a href="#" class="hover:text-electric-red-400 transition-colors">Philosophy</a>
+                <a href="#" class="hover:text-electric-red-400 transition-colors">Training</a>
+                <a href="#" class="px-6 py-2 bg-electric-red-400 text-white font-bold skew-x-[-10deg] hover:bg-electric-red-500 transition-transform hover:scale-105">
                     <span class="block skew-x-[10deg]">JOIN SQUAD</span>
                 </a>
             </div>
-            <button class="md:hidden text-white hover:text-lime-400 transition-colors">
+            <button class="md:hidden text-white hover:text-electric-red-400 transition-colors">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
@@ -67,37 +68,37 @@
                         </h2>
                     </div>
                     <div class="details-content hidden opacity-0 absolute inset-0 z-20 p-8 pt-32 bg-neutral-900 overflow-y-auto">
-                        <button class="close-btn absolute top-6 right-6 p-2 bg-white/10 rounded-full hover:bg-red-500 transition-colors"><svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-                        <h2 class="text-3xl text-lime-400 font-header mb-4">Speed Training Protocol</h2>
+                        <button class="close-btn absolute top-6 right-6 p-2 bg-white/10 rounded-full hover:bg-electric-red-400 transition-colors"><svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+                        <h2 class="text-3xl text-electric-red-400 font-header mb-4">Speed Training Protocol</h2>
                         <p class="text-white text-lg max-w-2xl">We focus on explosive starts and deceleration mechanics.</p>
                     </div>
                 </div>
 
                 <div id="ghost-2" class="hidden col-span-2 md:row-span-1 rounded-3xl bg-transparent pointer-events-none"></div>
 
-                <div id="card-2" onclick="expandCard('card-2', 'ghost-2')" class="expandable-card relative group col-span-2 md:row-span-1 rounded-3xl overflow-hidden border border-white/10 cursor-pointer hover:border-lime-400/50 transition-all duration-300 shadow-lg">
+                <div id="card-2" onclick="expandCard('card-2', 'ghost-2')" class="expandable-card relative group col-span-2 md:row-span-1 rounded-3xl overflow-hidden border border-white/10 cursor-pointer hover:border-electric-red-400/50 transition-all duration-300 shadow-lg">
                     <div class="absolute inset-0 bg-[url('./animeBG.png')] bg-cover bg-[center_top] transition-transform duration-700 ease-out group-hover:scale-105"></div>
                     
-                    <div class="relative z-10 h-full p-6 md:p-8 flex flex-col justify-center items-start pointer-events-none">
+                    <div id="card-2-preview" class="relative z-10 h-full p-6 md:p-8 flex flex-col justify-center items-start pointer-events-none transition-opacity duration-300">
                         <p class="text-white text-xs font-bold tracking-widest uppercase mb-1 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">Philosophy</p>
                         <h1 class="font-header text-4xl md:text-5xl text-white uppercase leading-none drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
                             Zero Cost.<br>
-                            <span class="text-lime-400 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">100% Grind.</span>
+                            <span class="text-electric-red-400 drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">100% Grind.</span>
                         </h1>
                     </div>
 
-                    <div class="details-content hidden opacity-0 absolute inset-0 z-20 p-8  backdrop-blur-xl overflow-y-auto flex flex-col items-start justify-center">
+                    <div class="details-content hidden opacity-0 absolute inset-0 z-20 p-8 overflow-y-auto flex flex-col items-start justify-center">
                         <button onclick="event.stopPropagation(); closeCard('card-2', 'ghost-2')" class="absolute top-6 right-6 p-2 bg-white/10 rounded-full hover:bg-red-500 transition-colors pointer-events-auto">
                              <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                         </button>
                         <div class="max-w-3xl mt-12 pointer-events-auto">
-                            <p class="text-lg text-white font-sans leading-relaxed drop-shadow-md mb-6 font-medium">
+                            <p class="text-2xl text-white font-sans leading-relaxed drop-shadow-md mb-6 font-medium bg-neutral-900/70 p-6 rounded-xl shadow-lg" style="-webkit-text-stroke: .4px #FF0033; text-stroke: 1px #FF0033;">
                                 We believe that talent should never be restricted by a price tag. In a world where elite training costs thousands, we are breaking the mold. 
                             </p>
-                            <p class="text-lg text-white font-sans leading-relaxed drop-shadow-md mb-6 font-medium">
-                                Our program isn't about fancy equipment or expensive gear. It's about <span class="text-lime-400 font-bold">Mental Toughness</span>, <span class="text-lime-400 font-bold">Tactical IQ</span>, and the willingness to outwork everyone else on the field.
+                            <p class="text-2xl text-white font-sans leading-relaxed drop-shadow-md mb-6 font-medium bg-neutral-900/70 p-6 rounded-xl shadow-lg" style="-webkit-text-stroke: .4px #FF0033; text-stroke: 1px #FF0033;">
+                                Our program isn't about fancy equipment or expensive gear. It's about <span class="text-electric-red-400 font-bold" style="-webkit-text-stroke: .4px white; text-stroke: 1px white;">Mental Toughness</span>, <span class="text-electric-red-400 font-bold" style="-webkit-text-stroke: .4px white; text-stroke: 1px white;">Tactical IQ</span>, and the willingness to outwork everyone else on the field.
                             </p>
-                            <button class="mt-4 px-8 py-3 bg-lime-400 text-black font-bold uppercase skew-x-[-10deg] hover:bg-white transition-colors">
+                            <button class="mt-4 px-8 py-3 bg-electric-red-400 text-white font-bold uppercase skew-x-[-10deg] hover:bg-off-white hover:text-black transition-colors">
                                 <span class="block skew-x-[10deg]">Apply Now</span>
                             </button>
                         </div>
@@ -146,8 +147,8 @@
                         <p class="font-header text-white text-lg font-bold uppercase leading-none">Coach MARK</p>
                     </div>
                     <div class="details-content hidden opacity-0 absolute inset-0 z-20 p-6 bg-neutral-900 overflow-y-auto">
-                        <button class="close-btn absolute top-4 right-4 p-1 bg-white/10 rounded-full hover:bg-red-500"><svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
-                        <h2 class="text-2xl text-lime-400 font-header mb-2 mt-8">Coach MARK</h2>
+                        <button class="close-btn absolute top-4 right-4 p-1 bg-white/10 rounded-full hover:bg-electric-red-400"><svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+                        <h2 class="text-2xl text-electric-red-400 font-header mb-2 mt-8">Coach MARK</h2>
                         <p class="text-sm text-neutral-300">Former D1 Athlete...</p>
                     </div>
                 </div>
@@ -157,7 +158,7 @@
                 <div id="card-6" onclick="expandCard('card-6', 'ghost-6')" class="expandable-card col-span-1 md:row-span-1 bg-neutral-950 rounded-3xl p-4 border border-white/10 flex items-center justify-center relative overflow-hidden shadow-lg cursor-pointer group">
                     <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0d_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0d_1px,transparent_1px)] bg-[size:16px_16px] opacity-70"></div>
                     <div class="text-center z-10 pointer-events-none">
-                        <p class="font-header text-2xl md:text-3xl text-white font-bold group-hover:text-lime-400 transition-colors">IQ + GRIT</p>
+                        <p class="font-header text-2xl md:text-3xl text-white font-bold group-hover:text-electric-red-400 transition-colors">IQ + GRIT</p>
                     </div>
                     <div class="details-content hidden opacity-0 absolute inset-0 z-20 p-6 bg-neutral-950 overflow-y-auto">
                         <button class="close-btn absolute top-4 right-4 p-1 bg-white/10 rounded-full hover:bg-red-500"><svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
@@ -222,6 +223,14 @@
 
             // Show ghost to maintain layout
             ghost.classList.remove('hidden');
+
+            // Hide card-2 preview content if expanding card-2
+            if (cardId === 'card-2') {
+                const preview = document.getElementById('card-2-preview');
+                if (preview) {
+                    preview.style.opacity = '0';
+                }
+            }
 
             // Remove grid positioning classes
             const gridClasses = card.className.match(/(col-span-\d+|row-span-\d+|md:col-span-\d+|md:row-span-\d+)/g) || [];
@@ -296,6 +305,16 @@
                 setTimeout(() => details.classList.add('hidden'), 200);
             }
 
+            // Show card-2 preview content again if closing card-2
+            if (cardId === 'card-2') {
+                const preview = document.getElementById('card-2-preview');
+                if (preview) {
+                    setTimeout(() => {
+                        preview.style.opacity = '1';
+                    }, 200);
+                }
+            }
+
             setTimeout(() => {
                 // Clear inline styles
                 card.style.top = '';
@@ -312,7 +331,7 @@
                 // Hide ghost - card returns to normal flow
                 ghost.classList.add('hidden');
                 activeCardId = null;
-            }, 400);
+            }, 300);
         }
     </script>
 </body>
