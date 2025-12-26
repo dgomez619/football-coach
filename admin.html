@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coach MARK - Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              header: ["Oswald", "sans-serif"],
+            },
+            colors: { "electric-red": { 400: "#FF0033", 500: "#E6002E" } },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-black text-white font-sans antialiased min-h-screen flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-black to-black"
+  >
+    <div class="w-full max-w-md p-6">
+      <div class="text-center mb-10">
+        <h1 class="font-header text-4xl font-bold italic tracking-wider">
+          COMMAND<span class="text-electric-red-400">CENTER</span>
+        </h1>
+        <p class="text-neutral-500 text-sm tracking-widest mt-2 uppercase">
+          Admin Access Only
+        </p>
+      </div>
+
+      <div
+        id="login-screen"
+        class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-8 rounded-3xl shadow-2xl"
+      >
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label
+              class="block text-xs font-bold uppercase text-neutral-500 mb-1"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:border-electric-red-400 outline-none transition-colors"
+              placeholder="coach@example.com"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-xs font-bold uppercase text-neutral-500 mb-1"
+              >Password</label
+            >
+            <input
+              type="password"
+              id="password"
+              class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:border-electric-red-400 outline-none transition-colors"
+              placeholder="••••••••"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-electric-red-400 text-white font-header font-bold uppercase py-3 rounded-xl hover:bg-electric-red-500 transition-transform hover:scale-[1.02]"
+          >
+            Enter System
+          </button>
+        </form>
+      </div>
+
+      <div id="dashboard-screen" class="hidden space-y-6">
+        <!-- Athlete Signups Section -->
+        <div
+          class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl"
+        >
+          <h2 class="font-header text-xl mb-4 flex items-center justify-between">
+            <span class="flex items-center">
+              <span
+                class="w-2 h-2 bg-electric-red-400 rounded-full mr-2 animate-pulse"
+              ></span>
+              Athlete Signups
+            </span>
+            <span id="signup-count" class="text-sm text-neutral-400">0 Applications</span>
+          </h2>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-white/10 text-left">
+                  <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">Date</th>
+                  <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">Athlete Name</th>
+                  <th class="pb-3 pr-6 text-neutral-400 font-bold uppercase text-xs">Age</th>
+                  <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">School</th>
+                  <th class="pb-3 text-neutral-400 font-bold uppercase text-xs text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="signups-table-body">
+                <tr>
+                  <td colspan="5" class="py-8 text-center text-neutral-500">
+                    No signups yet. Waiting for athletes to join...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Map Location Section -->
+        <div
+          class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl"
+        >
+          <h2 class="font-header text-xl mb-4 flex items-center">
+            <span
+              class="w-2 h-2 bg-electric-red-400 rounded-full mr-2 animate-pulse"
+            ></span>
+            Update Field Location
+          </h2>
+
+          <p class="text-xs text-neutral-400 mb-2">SEARCH GOOGLE MAPS</p>
+          <input
+            id="location-input"
+            type="text"
+            class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white mb-4 focus:border-electric-red-400 outline-none"
+            placeholder="e.g. Lincoln High School Field..."
+          />
+
+          <div
+            id="preview-map"
+            class="w-full h-40 bg-neutral-800 rounded-xl mb-4 hidden overflow-hidden relative border border-white/5"
+          >
+            <div id="admin-map-canvas" class="w-full h-full"></div>
+          </div>
+
+          <button
+            id="save-location-btn"
+            class="w-full bg-white text-black font-header font-bold uppercase py-3 rounded-xl hover:bg-neutral-200 transition-colors"
+          >
+            Update Live Map
+          </button>
+        </div>
+
+        <button
+          id="logout-btn"
+          class="w-full text-neutral-500 text-xs font-bold uppercase hover:text-white transition-colors"
+        >
+          Log Out
+        </button>
+      </div>
+
+    <!-- Expandable Row Details Modal -->
+    <div id="athlete-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+      <div class="bg-neutral-900 border border-white/10 rounded-3xl p-8 max-w-md w-full mx-4 relative">
+        <button id="close-modal" class="absolute top-4 right-4 text-neutral-400 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+        
+        <h3 class="font-header text-2xl text-electric-red-400 mb-6">Athlete Details</h3>
+        
+        <div id="modal-content" class="space-y-4 text-sm">
+          <!-- Dynamic content will be inserted here -->
+        </div>
+      </div>
+    </div>
+    </div>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDl7Bko2niUvNAcwaUe-zPXg7_TGMtlD5Y&libraries=places&callback=initMap" async defer></script>
+    
+    <script>
+      // Define initMap globally so Google Maps API can call it
+      // This is required by the callback parameter
+      window.initMap = function() {
+        // Empty function - actual initialization happens in initGoogleAutocomplete
+        // after user authentication
+        console.log('Google Maps API loaded successfully');
+      };
+    </script>
+    
+    <script type="module">
+      // 1. IMPORT FROM YOUR CONFIG FILE
+      import './firebase-config.js';
+      import { auth, db } from './firebase-config.js';
+      
+      // 2. IMPORT FIREBASE FUNCTIONS FROM CDN
+      import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+      import { doc, setDoc, collection, onSnapshot, query, orderBy, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+      // --- DOM ELEMENTS ---
+      const loginScreen = document.getElementById("login-screen");
+      const dashboardScreen = document.getElementById("dashboard-screen");
+      const locationInput = document.getElementById("location-input");
+      const signupsTableBody = document.getElementById("signups-table-body");
+      const signupCount = document.getElementById("signup-count");
+      const athleteModal = document.getElementById("athlete-modal");
+      const modalContent = document.getElementById("modal-content");
+      const closeModal = document.getElementById("close-modal");
+
+      let selectedPlaceData = null;
+
+      // --- AUTHENTICATION LOGIC ---
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          loginScreen.classList.add("hidden");
+          dashboardScreen.classList.remove("hidden");
+          
+          // Load signups
+          loadSignups();
+          
+          // Initialize map logic only if user is logged in
+          if (typeof google !== 'undefined') {
+            initGoogleAutocomplete();
+          } else {
+            // Fallback if map script loads slowly
+            window.addEventListener('load', initGoogleAutocomplete);
+          }
+        } else {
+          loginScreen.classList.remove("hidden");
+          dashboardScreen.classList.add("hidden");
+        }
+      });
+
+      document.getElementById("login-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const email = document.getElementById("email").value;
+        const pass = document.getElementById("password").value;
+        signInWithEmailAndPassword(auth, email, pass).catch((err) =>
+          alert("Login Failed: " + err.message)
+        );
+      });
+
+      document.getElementById("logout-btn").addEventListener("click", () => signOut(auth));
+
+      // --- LOAD SIGNUPS FROM FIRESTORE ---
+      function loadSignups() {
+        const signupsQuery = query(collection(db, "signups"), orderBy("timestamp", "desc"));
+        
+        onSnapshot(signupsQuery, (snapshot) => {
+          const signups = [];
+          snapshot.forEach((doc) => {
+            signups.push({ id: doc.id, ...doc.data() });
+          });
+
+          // Update count
+          signupCount.textContent = `${signups.length} Application${signups.length !== 1 ? 's' : ''}`;
+
+          // Populate table
+          if (signups.length === 0) {
+            signupsTableBody.innerHTML = `
+              <tr>
+                <td colspan="5" class="py-8 text-center text-neutral-500">
+                  No signups yet. Waiting for athletes to join...
+                </td>
+              </tr>
+            `;
+          } else {
+            signupsTableBody.innerHTML = signups.map(signup => {
+              const date = new Date(signup.timestamp).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              });
+              
+              return `
+                <tr class="border-b border-white/5 hover:bg-white/5 transition-colors">
+                  <td class="py-3 pr-4 text-neutral-300">${date}</td>
+                  <td class="py-3 pr-4 text-white font-semibold">${signup.fullName}</td>
+                  <td class="py-3 pr-6 text-neutral-300">${signup.age}</td>
+                  <td class="py-3 pr-4 text-neutral-300">${signup.school}</td>
+                  <td class="py-3 text-right">
+                    <button onclick="viewAthleteDetails('${signup.id}')" class="px-3 py-1 bg-electric-red-400 text-white text-xs font-bold rounded-lg hover:bg-electric-red-500 transition-colors mr-2">
+                      View
+                    </button>
+                    <button onclick="deleteSignup('${signup.id}')" class="px-3 py-1 bg-neutral-700 text-white text-xs font-bold rounded-lg hover:bg-red-600 transition-colors">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('');
+          }
+        });
+      }
+
+      // --- VIEW ATHLETE DETAILS ---
+      window.viewAthleteDetails = async function(signupId) {
+        const signupsQuery = query(collection(db, "signups"));
+        onSnapshot(signupsQuery, (snapshot) => {
+          snapshot.forEach((doc) => {
+            if (doc.id === signupId) {
+              const data = doc.data();
+              const date = new Date(data.timestamp).toLocaleString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit'
+              });
+              
+              modalContent.innerHTML = `
+                <div class="space-y-3">
+                  <div>
+                    <p class="text-xs text-neutral-400 uppercase">Submitted</p>
+                    <p class="text-white">${date}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-neutral-400 uppercase">Full Name</p>
+                    <p class="text-white font-semibold">${data.fullName}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-neutral-400 uppercase">Age</p>
+                    <p class="text-white">${data.age} years old</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-neutral-400 uppercase">School</p>
+                    <p class="text-white">${data.school}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-neutral-400 uppercase">Guardian Name</p>
+                    <p class="text-white">${data.guardianName}</p>
+                  </div>
+                  <div>
+                    <p class="text-xs text-neutral-400 uppercase">Guardian Contact</p>
+                    <p class="text-white">
+                      <a href="tel:${data.guardianPhone}" class="text-electric-red-400 hover:underline">${data.guardianPhone}</a>
+                    </p>
+                  </div>
+                </div>
+              `;
+              athleteModal.classList.remove('hidden');
+            }
+          });
+        }, { once: true });
+      };
+
+      // --- DELETE SIGNUP ---
+      window.deleteSignup = async function(signupId) {
+        if (confirm('Are you sure you want to delete this signup?')) {
+          try {
+            await deleteDoc(doc(db, "signups", signupId));
+            alert('Signup deleted successfully');
+          } catch (error) {
+            console.error('Error deleting signup:', error);
+            alert('Error deleting signup: ' + error.message);
+          }
+        }
+      };
+
+      // --- CLOSE MODAL ---
+      closeModal.addEventListener('click', () => {
+        athleteModal.classList.add('hidden');
+      });
+
+      athleteModal.addEventListener('click', (e) => {
+        if (e.target === athleteModal) {
+          athleteModal.classList.add('hidden');
+        }
+      });
+
+      // --- GOOGLE MAPS LOGIC ---
+      function initGoogleAutocomplete() {
+        const autocomplete = new google.maps.places.Autocomplete(locationInput);
+        const mapCanvas = document.getElementById("admin-map-canvas");
+        const previewContainer = document.getElementById("preview-map");
+
+        // Setup a small preview map
+        const map = new google.maps.Map(mapCanvas, {
+          center: { lat: 32.7157, lng: -117.1611 },
+          zoom: 15,
+          disableDefaultUI: true,
+          styles: [
+            { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+            { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+            { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+            { featureType: "road", elementType: "geometry", stylers: [{ color: "#38414e" }] },
+            { featureType: "road", elementType: "geometry.stroke", stylers: [{ color: "#212a37" }] },
+          ],
+        });
+        const marker = new google.maps.Marker({ map: map });
+
+        autocomplete.addListener("place_changed", () => {
+          const place = autocomplete.getPlace();
+          if (!place.geometry) {
+            alert("No details available for: " + place.name);
+            return;
+          }
+
+          // Show preview
+          previewContainer.classList.remove("hidden");
+          
+          // Must trigger resize when showing a hidden map div
+          google.maps.event.trigger(map, "resize");
+
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);
+          }
+          marker.setPosition(place.geometry.location);
+
+          selectedPlaceData = {
+            name: place.name,
+            address: place.formatted_address,
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+            placeId: place.place_id,
+            updatedAt: new Date().toISOString(),
+          };
+        });
+      }
+
+      // --- SAVE TO DATABASE ---
+      document.getElementById("save-location-btn").addEventListener("click", async () => {
+          if (!selectedPlaceData) {
+            alert("Please search and select a location first.");
+            return;
+          }
+
+          try {
+            await setDoc(doc(db, "settings", "map_config"), selectedPlaceData);
+            alert("Location Updated Successfully!");
+            
+            // Clear the input after success
+            locationInput.value = '';
+            document.getElementById("preview-map").classList.add("hidden");
+          } catch (error) {
+            console.error("Error saving map:", error);
+            alert("Error saving: " + error.message);
+          }
+        });
+    </script>
+  </body>
+</html>
