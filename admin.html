@@ -27,9 +27,9 @@
     </script>
   </head>
   <body
-    class="bg-black text-white font-sans antialiased min-h-screen flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-black to-black"
+    class="bg-black text-white font-sans antialiased min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 via-black to-black"
   >
-    <div class="w-full max-w-md p-6">
+    <div class="w-full max-w-7xl mx-auto p-6">
       <div class="text-center mb-10">
         <h1 class="font-header text-4xl font-bold italic tracking-wider">
           COMMAND<span class="text-electric-red-400">CENTER</span>
@@ -41,7 +41,7 @@
 
       <div
         id="login-screen"
-        class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-8 rounded-3xl shadow-2xl"
+        class="max-w-md mx-auto bg-neutral-900/50 backdrop-blur-md border border-white/10 p-8 rounded-3xl shadow-2xl"
       >
         <form id="login-form" class="space-y-4">
           <div>
@@ -77,80 +77,161 @@
         </form>
       </div>
 
-      <div id="dashboard-screen" class="hidden space-y-6">
-        <!-- Athlete Signups Section -->
-        <div
-          class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl"
-        >
-          <h2 class="font-header text-xl mb-4 flex items-center justify-between">
-            <span class="flex items-center">
-              <span
-                class="w-2 h-2 bg-electric-red-400 rounded-full mr-2 animate-pulse"
-              ></span>
-              Athlete Signups
-            </span>
-            <span id="signup-count" class="text-sm text-neutral-400">0 Applications</span>
-          </h2>
+      <div id="dashboard-screen" class="hidden">
+        <!-- Desktop Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- LEFT COLUMN -->
+          <div class="space-y-6">
+            <!-- Athlete Signups Section -->
+            <div class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl">
+              <h2 class="font-header text-xl mb-4 flex items-center justify-between">
+                <span class="flex items-center">
+                  <span class="w-2 h-2 bg-electric-red-400 rounded-full mr-2 animate-pulse"></span>
+                  Athlete Signups
+                </span>
+                <span id="signup-count" class="text-sm text-neutral-400">0 Applications</span>
+              </h2>
 
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <thead>
-                <tr class="border-b border-white/10 text-left">
-                  <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">Date</th>
-                  <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">Athlete Name</th>
-                  <th class="pb-3 pr-6 text-neutral-400 font-bold uppercase text-xs">Age</th>
-                  <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">School</th>
-                  <th class="pb-3 text-neutral-400 font-bold uppercase text-xs text-right">Actions</th>
-                </tr>
-              </thead>
-              <tbody id="signups-table-body">
-                <tr>
-                  <td colspan="5" class="py-8 text-center text-neutral-500">
-                    No signups yet. Waiting for athletes to join...
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-white/10 text-left">
+                      <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">Date</th>
+                      <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">Athlete Name</th>
+                      <th class="pb-3 pr-6 text-neutral-400 font-bold uppercase text-xs">Age</th>
+                      <th class="pb-3 pr-4 text-neutral-400 font-bold uppercase text-xs">School</th>
+                      <th class="pb-3 text-neutral-400 font-bold uppercase text-xs text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="signups-table-body">
+                    <tr>
+                      <td colspan="5" class="py-8 text-center text-neutral-500">
+                        No signups yet. Waiting for athletes to join...
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Training Session Form -->
+            <div class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl">
+              <h2 class="font-header text-xl mb-4 flex items-center">
+                <span class="w-2 h-2 bg-electric-red-400 rounded-full mr-2 animate-pulse"></span>
+                Schedule Training Session
+              </h2>
+
+              <form id="training-session-form" class="space-y-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase text-neutral-400 mb-2">Date & Time*</label>
+                  <input
+                    type="datetime-local"
+                    id="session-datetime"
+                    required
+                    class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:border-electric-red-400 outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold uppercase text-neutral-400 mb-2">Location*</label>
+                  <input
+                    type="text"
+                    id="session-location"
+                    required
+                    placeholder="e.g., Lincoln High School Field"
+                    class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:border-electric-red-400 outline-none transition-colors"
+                  />
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold uppercase text-neutral-400 mb-2">Training Description*</label>
+                  <textarea
+                    id="session-description"
+                    required
+                    rows="3"
+                    placeholder="Describe the training routine..."
+                    class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:border-electric-red-400 outline-none transition-colors resize-none"
+                  ></textarea>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-bold uppercase text-neutral-400 mb-2">Available Spots*</label>
+                  <input
+                    type="number"
+                    id="session-spots"
+                    required
+                    min="1"
+                    placeholder="e.g., 20"
+                    class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white focus:border-electric-red-400 outline-none transition-colors"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full bg-electric-red-400 text-white font-header font-bold uppercase py-3 rounded-xl hover:bg-electric-red-500 transition-colors"
+                >
+                  Publish Session
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="space-y-6">
+            <!-- Inbox Section -->
+            <div class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl">
+              <h2 class="font-header text-xl mb-4 flex items-center justify-between">
+                <span class="flex items-center">
+                  <span class="w-2 h-2 bg-electric-red-400 rounded-full mr-2 animate-pulse"></span>
+                  Inbox
+                </span>
+                <span id="message-count" class="text-sm text-neutral-400">0 Messages</span>
+              </h2>
+
+              <div class="space-y-3 max-h-96 overflow-y-auto" id="inbox-container">
+                <div class="text-center py-8 text-neutral-500">
+                  No messages yet.
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Location Section -->
+            <div class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl">
+              <h2 class="font-header text-xl mb-4 flex items-center">
+                <span class="w-2 h-2 bg-electric-red-400 rounded-full mr-2 animate-pulse"></span>
+                Update Field Location
+              </h2>
+
+              <p class="text-xs text-neutral-400 mb-2">SEARCH GOOGLE MAPS</p>
+              <input
+                id="location-input"
+                type="text"
+                class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white mb-4 focus:border-electric-red-400 outline-none"
+                placeholder="e.g. Lincoln High School Field..."
+              />
+
+              <div
+                id="preview-map"
+                class="w-full h-40 bg-neutral-800 rounded-xl mb-4 hidden overflow-hidden relative border border-white/5"
+              >
+                <div id="admin-map-canvas" class="w-full h-full"></div>
+              </div>
+
+              <button
+                id="save-location-btn"
+                class="w-full bg-white text-black font-header font-bold uppercase py-3 rounded-xl hover:bg-neutral-200 transition-colors"
+              >
+                Update Live Map
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Map Location Section -->
-        <div
-          class="bg-neutral-900/50 backdrop-blur-md border border-white/10 p-6 rounded-3xl"
-        >
-          <h2 class="font-header text-xl mb-4 flex items-center">
-            <span
-              class="w-2 h-2 bg-electric-red-400 rounded-full mr-2 animate-pulse"
-            ></span>
-            Update Field Location
-          </h2>
-
-          <p class="text-xs text-neutral-400 mb-2">SEARCH GOOGLE MAPS</p>
-          <input
-            id="location-input"
-            type="text"
-            class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white mb-4 focus:border-electric-red-400 outline-none"
-            placeholder="e.g. Lincoln High School Field..."
-          />
-
-          <div
-            id="preview-map"
-            class="w-full h-40 bg-neutral-800 rounded-xl mb-4 hidden overflow-hidden relative border border-white/5"
-          >
-            <div id="admin-map-canvas" class="w-full h-full"></div>
-          </div>
-
-          <button
-            id="save-location-btn"
-            class="w-full bg-white text-black font-header font-bold uppercase py-3 rounded-xl hover:bg-neutral-200 transition-colors"
-          >
-            Update Live Map
-          </button>
-        </div>
-
+        <!-- Logout Button -->
         <button
           id="logout-btn"
-          class="w-full text-neutral-500 text-xs font-bold uppercase hover:text-white transition-colors"
+          class="w-full mt-6 text-neutral-500 text-xs font-bold uppercase hover:text-white transition-colors"
         >
           Log Out
         </button>
@@ -204,6 +285,9 @@
       const athleteModal = document.getElementById("athlete-modal");
       const modalContent = document.getElementById("modal-content");
       const closeModal = document.getElementById("close-modal");
+      const inboxContainer = document.getElementById("inbox-container");
+      const messageCount = document.getElementById("message-count");
+      const trainingSessionForm = document.getElementById("training-session-form");
 
       let selectedPlaceData = null;
 
@@ -215,6 +299,9 @@
           
           // Load signups
           loadSignups();
+          
+          // Load inbox messages
+          loadInbox();
           
           // Initialize map logic only if user is logged in
           if (typeof google !== 'undefined') {
@@ -365,6 +452,90 @@
           athleteModal.classList.add('hidden');
         }
       });
+
+      // --- TRAINING SESSION FORM ---
+      trainingSessionForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const sessionData = {
+          datetime: document.getElementById('session-datetime').value,
+          location: document.getElementById('session-location').value,
+          description: document.getElementById('session-description').value,
+          spots: parseInt(document.getElementById('session-spots').value),
+          createdAt: new Date().toISOString()
+        };
+
+        try {
+          await setDoc(doc(db, "settings", "next_training"), sessionData);
+          alert('Training session published successfully!');
+          trainingSessionForm.reset();
+        } catch (error) {
+          console.error('Error publishing session:', error);
+          alert('Error publishing session: ' + error.message);
+        }
+      });
+
+      // --- LOAD INBOX MESSAGES ---
+      function loadInbox() {
+        const messagesQuery = query(collection(db, "messages"), orderBy("timestamp", "desc"));
+        
+        onSnapshot(messagesQuery, (snapshot) => {
+          const messages = [];
+          snapshot.forEach((doc) => {
+            messages.push({ id: doc.id, ...doc.data() });
+          });
+
+          // Update count
+          messageCount.textContent = `${messages.length} Message${messages.length !== 1 ? 's' : ''}`;
+
+          // Populate inbox
+          if (messages.length === 0) {
+            inboxContainer.innerHTML = `
+              <div class="text-center py-8 text-neutral-500">
+                No messages yet.
+              </div>
+            `;
+          } else {
+            inboxContainer.innerHTML = messages.map(msg => {
+              const date = new Date(msg.timestamp).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit'
+              });
+              
+              return `
+                <div class="bg-black/30 border border-white/5 rounded-xl p-4 hover:border-white/10 transition-colors">
+                  <div class="flex justify-between items-start mb-2">
+                    <p class="text-white font-semibold">${msg.fullName}</p>
+                    <span class="text-xs text-neutral-500">${date}</span>
+                  </div>
+                  <p class="text-sm text-neutral-400 mb-2">${msg.message}</p>
+                  <div class="flex items-center gap-4 text-xs">
+                    ${msg.email ? `<a href="mailto:${msg.email}" class="text-electric-red-400 hover:underline">📧 ${msg.email}</a>` : ''}
+                    ${msg.phone ? `<a href="tel:${msg.phone}" class="text-electric-red-400 hover:underline">📞 ${msg.phone}</a>` : ''}
+                  </div>
+                  <button onclick="deleteMessage('${msg.id}')" class="mt-3 text-xs text-neutral-500 hover:text-red-500 transition-colors">
+                    Delete
+                  </button>
+                </div>
+              `;
+            }).join('');
+          }
+        });
+      }
+
+      // --- DELETE MESSAGE ---
+      window.deleteMessage = async function(messageId) {
+        if (confirm('Are you sure you want to delete this message?')) {
+          try {
+            await deleteDoc(doc(db, "messages", messageId));
+          } catch (error) {
+            console.error('Error deleting message:', error);
+            alert('Error deleting message: ' + error.message);
+          }
+        }
+      };
 
       // --- GOOGLE MAPS LOGIC ---
       function initGoogleAutocomplete() {
